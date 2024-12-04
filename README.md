@@ -1,43 +1,48 @@
 
-
-<h2>Table of Contents</h2>
-<ul>
-    <li><a href="#project-description">Project Description</a></li>
-    <li><a href="#motivation">Motivation</a></li>
-    <li><a href="#installation">Installation</a></li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#design">Design</a></li>
-    <li><a href="#technologies-used">Technologies Used</a></li>
-    <li><a href="#code-structure">Code Structure</a></li>
-    <li><a href="#demo">Demo</a></li>
-    <li><a href="#points-of-interest">Points of Interest</a></li>
-    <li><a href="#references">References</a></li>
-</ul>
-
 <h2 id="project-description">Project Description</h2>
 <p>A concise and informative summary of the project's purpose, key features, and target audience.</p>
 
 <h2 id="motivation">Motivation</h2>
-<p>A clear explanation of the reasons behind the project's creation, including the problem it addresses and the benefits it offers.</p>
+<p>Navigation from one page (source) to another page (target) might take time. It is nice to show the user some indication while you are still in the source page. Here, we will discover how to do it in an app router.</p>
+
+<p>How to navigate from page?</p>
+
+<ul>
+  <li>router.push
+    <p>Using <code>router.push</code> for programmatic navigation:</p>
+    
+```ts
+    router.push('/target-page');</code></pre>
+```
+
+  </li>
+  <li>External API like when you need to log in using OAuth2 - Google
+    <p>Example of redirecting to an OAuth2 login page:</p>
+   
+```ts
+    window.location.href = 'https://accounts.google.com/o/oauth2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token';
+```
+  
+  </li>
+  <li>Click on anchor element
+    <p>Using an anchor element for navigation:</p>
+
+```ts
+    <a href="/target-page">Click here to navigate</a>
+```
+  </li>
+</ul>
+
+
 
 <h2 id="installation">Installation</h2>
-<p>Step-by-step instructions on how to set up the development environment and install necessary dependencies. </p>
+
 
 
 <h2 id="usage">Usage</h2>
-<p>Instructions on how to use the project, including examples, screenshots, or code snippets</p>
 
-
-<h2 id="design">Design</h2>
-<p>A high-level overview of the project's architecture, design patterns, and key components.</p>
-
-<h2 id="technologies-used">Technologies Used</h2>
-<ul>
-    <li>Frontend technologies (e.g., React, Vue, Angular)</li>
-    <li>Backend technologies (e.g., Node.js, Python, Ruby)</li>
-    <li>Databases (e.g., MySQL, PostgreSQL, MongoDB)</li>
-    <li>Cloud platforms (if applicable)</li>
-</ul>
+<h2>Design</h2>
+add hiden loader in layout.ts - common to all pages and enable on use cases above
 
 <h2 id="code-structure">Code Structure</h2>
 <p>An explanation of the project's code structure, including important files and directories.</p>
@@ -51,9 +56,7 @@
 
 <h2 id="points-of-interest">Points of Interest</h2>
 <ul>
-    <li>Innovative features</li>
-    <li>Technical challenges and solutions</li>
-    <li>Lessons learned</li>
+    <li>page router had events that were easy to ue using nprogress but app router does not. </li>
 </ul>
 
 <h2 id="references">References</h2>
