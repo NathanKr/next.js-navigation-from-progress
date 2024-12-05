@@ -1,68 +1,76 @@
 
-<h2 id="project-description">Project Description</h2>
-<p>A concise and informative summary of the project's purpose, key features, and target audience.</p>
+<h1>UX Indication for Navigation from Pages (Source) in Next.js App Router</h1>
 
-<h2 id="motivation">Motivation</h2>
-<p>Navigation from one page (source) to another page (target) might take time. It is nice to show the user some indication while you are still in the source page. Here, we will discover how to do it in an app router.</p>
 
-<p>How to navigate from page?</p>
+<h2>Project Description</h2>
+<p>This project demonstrates how to provide a UX indication (e.g., loading spinner) when navigating between pages in a Next.js application using the App Router. This includes both navigation within the app (e.g., internal page links) and to external pages (e.g., OAuth2 login). The indication will remain visible on the source page until the target page is fully loaded or the user is redirected.</p>
+
+
+<h2>Motivation</h2>
+<p>Navigation between pages, whether internal or external, often takes some time. It's important to provide users with feedback during this waiting period to improve the user experience</p>
+
+
+<h2>Installation</h2>
+
+install all packages using
+
+```bash
+pnpm i
+```
+Alternitvely you can use npm
+
+<h2>Usage</h2>
+
+```bash
+npm run dev
+```
+
+
+<h2>Pre Design Discussion</h2>
+
+<h3>Use case to navigate from page?</h3>
 
 <ul>
-  <li>router.push
+  <li>navigate between the application pages using router.push
     <p>Using <code>router.push</code> for programmatic navigation:</p>
     
 ```ts
-    router.push('/target-page');</code></pre>
+    router.push('/target-internal-page');
 ```
 
   </li>
-  <li>External API like when you need to log in using OAuth2 - Google
-    <p>Example of redirecting to an OAuth2 login page:</p>
-   
+  <li>Navigate to a page outside the application e.g. when you need to login using OAuth2 - Google
+       
 ```ts
-    window.location.href = 'https://accounts.google.com/o/oauth2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token';
+<Link href="https://accounts.google.com/o/oauth2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token">Login to google</Link>
 ```
   
   </li>
-  <li>Click on anchor element
-    <p>Using an anchor element for navigation:</p>
-
-```ts
-    <a href="/target-page">Click here to navigate</a>
-```
-  </li>
 </ul>
 
-
-
-<h2 id="installation">Installation</h2>
-
-
-
-<h2 id="usage">Usage</h2>
+Any page in the application is a valid candidate to navigate from 
 
 <h2>Design</h2>
-add hiden loader in layout.ts - common to all pages and enable on use cases above
-
-<h2 id="code-structure">Code Structure</h2>
-<p>An explanation of the project's code structure, including important files and directories.</p>
-
-<h2 id="demo">Demo</h2>
-<p>A link to a live demo or a GIF/video showcasing the project's functionality.</p>
+<p>The design is based on two main principles:</p>
 <ul>
-    <li>Live demo link</li>
-    <li>GIF or video demonstration</li>
+  <li>Implement a hidden loader in <code>layout.ts</code> that is common to all pages, and manage its visibility using a global state manager like Zustand.</li>
+  <li>Trigger the loader before navigation begins, ensuring users see an indication on the the page you navigate from that something is happening, whether navigating internally or to an external page.</li>
 </ul>
 
-<h2 id="points-of-interest">Points of Interest</h2>
+
+<h2>Code Structure</h2>
+........
+
+<h2>Demo</h2>
+........
+
+<h2>Points of Interest</h2>
 <ul>
-    <li>page router had events that were easy to ue using nprogress but app router does not. </li>
+      <li>Unlike the Page Router, the App Router does not provide easy-to-use events , making it necessary to implement custom logic for showing navigation progress. but anyway next.js router is not relevant when you navigate to external pages</li>
 </ul>
 
 <h2 id="references">References</h2>
 <ul>
-    <li>External libraries or frameworks</li>
-    <li>Articles or tutorials</li>
-    <li>Other relevant resources</li>
+    <li></li>
 </ul>
 
