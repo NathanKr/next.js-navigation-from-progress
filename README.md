@@ -69,8 +69,16 @@ Any page in the application is a valid candidate to navigate from
       <li>Unlike the Page Router, the App Router does not provide easy-to-use events , making it necessary to implement custom logic for showing navigation progress. but anyway next.js router is not relevant when you navigate to external pages</li>
 </ul>
 
-<h2 id="references">References</h2>
+<h2>References</h2>
 <ul>
     <li></li>
+</ul>
+
+<h2>open issue</h2>
+<ul>
+    <li>working on production not development(error)</li>
+    <li>why i get hydration error in development</li>
+    <li>why i need to put children in dependenct array</li>
+    <li>why i need to use useEffect in Layoout component and not enough in loader</li>
 </ul>
 

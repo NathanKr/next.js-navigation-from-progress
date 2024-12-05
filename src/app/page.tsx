@@ -1,10 +1,23 @@
-import Link from "next/link";
+"use client"
+
+import useNavigationStore from "@/store/navigation-store";
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
+  const {startNavigation} = useNavigationStore()
+
+  const handleClick = () => {
+    startNavigation(); // Start the loader
+    router.push('/page1');
+  };
+
   return (
     <>
       <h1>This is home page</h1>
-      <Link href="/page1">Navigate to Page1</Link>
+      <button onClick={handleClick}>Navigate to Page1</button>
     </>
   );
 }
+
+
