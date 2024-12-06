@@ -67,6 +67,7 @@ Any page in the application is a valid candidate to navigate from
 <h2>Points of Interest</h2>
 <ul>
       <li>Unlike the Page Router, the App Router does not provide easy-to-use events , making it necessary to implement custom logic for showing navigation progress. but anyway next.js router is not relevant when you navigate to external pages</li>
+      <li>It is hard to debug console.log in RootLayout because the log is deleted by the browwser per page. you can tell the prowser not to do it. in firefox you do it in the dev tools->console->persist logs</li>
 </ul>
 
 <h2>References</h2>
@@ -76,9 +77,9 @@ Any page in the application is a valid candidate to navigate from
 
 <h2>open issue</h2>
 <ul>
-    <li>working on production not development(error)</li>
-    <li>why i get hydration error in development</li>
-    <li>why i need to put children in dependenct array</li>
+    <li>working on production not development --> looks like that the Rootlayout is not created for every page in develoment , just once. On production it is created for each page as expected. I assume in development this is done to save development run time</li>
+    <li>why i get hydration error in development ->because of gramerly extension in firefox. it worked in chrome and in firefox with gramerly disabled also </li>
+    <li>why i need to put children in dependency array --> because if children not there why should it re-render</li>
     <li>why i need to use useEffect in Layoout component and not enough in loader</li>
 </ul>
 

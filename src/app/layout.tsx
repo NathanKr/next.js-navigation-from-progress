@@ -16,6 +16,8 @@ export default function RootLayout({
     // Ensure navigation state is cleared whenever the layout mounts
     console.log("RootLayout mounted, ending navigation");
     endNavigation();
+    /*  without children in the dependency array , the loader appear on the target page 
+        even after endNavigation ,so i have to add it to the dependency array */
   }, [ children,endNavigation]);
 
   return (
