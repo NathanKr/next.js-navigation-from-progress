@@ -51,11 +51,25 @@ npm run dev
 Any page in the application is a valid candidate to navigate from 
 
 <h2>Design</h2>
+
+<h3>Principles</h3>
 <p>The design is based on two main principles:</p>
 <ul>
   <li>Implement a hidden loader in <code>layout.ts</code> that is common to all pages, and manage its visibility using a global state manager like Zustand.</li>
-  <li>Trigger the loader before navigation begins, ensuring users see an indication on the the page you navigate from that something is happening, whether navigating internally or to an external page.</li>
+  <li>Trigger the loader before navigation begins, ensuring users see an indication on the page you navigate from that something is happening, whether navigating internally or to an external page.</li>
 </ul>
+
+<h3>Optimal solution</h3>
+The optimal solution has three pilars : 
+
+<ol>
+<li>generic solution</li>
+<li>works in production</li>
+<li>works in development</li>
+</ol>
+
+<h3>Sub Optimal solution 1</h3>
+The following design is generic and it works in production but not in development. It has one layout - RootLayout. It does not work in development because due to fast relaod RootLayout is called only once per app and not per page. You can check tag 0.2
 
 
 <h2>Code Structure</h2>
@@ -77,7 +91,7 @@ Any page in the application is a valid candidate to navigate from
 
 <h2>open issue</h2>
 <ul>
-    <li>working on production not development --> looks like that the Rootlayout is not created for every page in develoment , just once. On production it is created for each page as expected. I assume in development this is done to save development run time</li>
+    <li>working on production not development --> looks like that the Rootlayout is not created for every page in develoment , just once (seems that it relate to fast refresh that is done). On production it is created for each page as expected. I assume in development this is done to save development run time</li>
     <li>why i get hydration error in development ->because of gramerly extension in firefox. it worked in chrome and in firefox with gramerly disabled also </li>
     <li>why i need to put children in dependency array --> because if children not there why should it re-render</li>
     <li>why i need to use useEffect in Layoout component and not enough in loader</li>

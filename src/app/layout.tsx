@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import FromPageLoader from "@/components/from-page-loader";
 import "./globals.css";
@@ -15,10 +15,11 @@ export default function RootLayout({
   useEffect(() => {
     // Ensure navigation state is cleared whenever the layout mounts
     console.log("RootLayout mounted, ending navigation");
+
     endNavigation();
     /*  without children in the dependency array , the loader appear on the target page 
-        even after endNavigation ,so i have to add it to the dependency array */
-  }, [ children,endNavigation]);
+        even after endNavigation ,so i have to add to the dependency array */
+  }, [children, endNavigation ]);
 
   return (
     <html lang="en">

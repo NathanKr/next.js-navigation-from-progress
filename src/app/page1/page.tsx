@@ -1,22 +1,16 @@
 "use client";
 
-import useNavigationStore from "@/store/navigation-store";
-import { useRouter } from 'next/navigation';
-
-
+import useNavigation from "@/hooks/use-navigation";
 
 export default function Page1() {
-  const { startNavigation } = useNavigationStore();
-  const router = useRouter();
+  const { navigateToInternalPage, navigateToExternalPage } = useNavigation();
 
   const navigateToInternal = () => {
-    startNavigation(); // Start the loader
-    router.push('/');
+    navigateToInternalPage("/");
   };
 
   const navigateToExternal = () => {
-    startNavigation(); // Start the loader
-    window.location.href = "https://www.example.com";
+    navigateToExternalPage("https://www.example.com");
   };
 
   return (

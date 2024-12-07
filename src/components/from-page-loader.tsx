@@ -6,5 +6,5 @@ import TopLoader from "./top-loader";
 export default function FromPageLoader() {
   const { isNavigating } = useNavigationStore();
 
-  return isNavigating ? <TopLoader/> : null;
+  return isNavigating ? <TopLoader /> : null;
 }

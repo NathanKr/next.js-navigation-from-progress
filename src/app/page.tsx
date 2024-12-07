@@ -1,15 +1,12 @@
-"use client"
+"use client";
 
-import useNavigationStore from "@/store/navigation-store";
-import { useRouter } from 'next/navigation';
+import useNavigation from "@/hooks/use-navigation";
 
 export default function Home() {
-  const router = useRouter();
-  const {startNavigation} = useNavigationStore()
+  const {navigateToInternalPage} = useNavigation()
 
   const handleClick = () => {
-    startNavigation(); // Start the loader
-    router.push('/page1');
+    navigateToInternalPage("/page1");
   };
 
   return (
@@ -19,5 +16,3 @@ export default function Home() {
     </>
   );
 }
-
-

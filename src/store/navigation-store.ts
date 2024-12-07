@@ -6,5 +6,7 @@ const useNavigationStore = create<NavigationState>((set) => ({
     startNavigation: () => set({ isNavigating: true }),
     endNavigation: () => set({ isNavigating: false }),
   }));
+
+  
   
   export default useNavigationStore;
