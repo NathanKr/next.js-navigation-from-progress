@@ -21,67 +21,66 @@ Alternitvely you can use npm
 
 <h2>Usage</h2>
 
+Invoke the server as follows 
+
 ```bash
-npm run dev
+npm run build
+npm start
 ```
 
+Navigate to internal and external page
 
-<h2>Pre Design Discussion</h2>
-
-<h3>Use case to navigate from page?</h3>
-
-<ul>
-  <li>navigate between the application pages using router.push
-    <p>Using <code>router.push</code> for programmatic navigation:</p>
-    
 ```ts
-    router.push('/target-internal-page');
+const { navigateToInternalPage, navigateToExternalPage } = useNavigation();
+
+  const navigateToInternal = () => {
+    navigateToInternalPage("/");
+  };
+
+  const navigateToExternal = () => {
+    navigateToExternalPage("https://www.example.com");
+  };
+
+  return (
+    <>
+      <h1>This is Page1</h1>
+      <button onClick={navigateToExternal}>Visit Example.com</button>
+      <br />
+      <button onClick={navigateToInternal}>Back to Home</button>
+    </>
+  );
 ```
 
-  </li>
-  <li>Navigate to a page outside the application e.g. when you need to login using OAuth2 - Google
-       
-```ts
-<Link href="https://accounts.google.com/o/oauth2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&response_type=token">Login to google</Link>
-```
-  
-  </li>
-</ul>
-
-Any page in the application is a valid candidate to navigate from 
 
 <h2>Design</h2>
 
-<h3>Principles</h3>
-<p>The design is based on two main principles:</p>
+<p>The design has three main parts</p>
 <ul>
-  <li>Implement a hidden loader in <code>layout.ts</code> that is common to all pages, and manage its visibility using a global state manager like Zustand.</li>
+  <li>Implement a hidden loader in the app <code>layout.ts</code> which is common to all pages, and manage its visibility using a global state manager - Zustand.</li>
   <li>Trigger the loader before navigation begins, ensuring users see an indication on the page you navigate from that something is happening, whether navigating internally or to an external page.</li>
+  <li>use custom hook for navigation to internal \ external pages</li>
 </ul>
 
-<h3>Optimal solution</h3>
-The optimal solution has three pilars : 
+<h2>Limitation</h2>
+Only the the build version is working correctly because RootLayout is called on every page navigation as follows
 
-<ol>
-<li>generic solution</li>
-<li>works in production</li>
-<li>works in development</li>
-</ol>
+<img src='./figs/build-version-is-working.png'/>
 
-<h3>Sub Optimal solution 1</h3>
-The following design is generic and it works in production but not in development. It has one layout - RootLayout. It does not work in development because due to fast relaod RootLayout is called only once per app and not per page. You can check tag 0.2
+The development is not working as expected and progress continue indefinetly. This is because RootLayout is called only once as follows
+
+<img src='./figs/development-version-not-working.png'/>
 
 
-<h2>Code Structure</h2>
-........
 
 <h2>Demo</h2>
-........
+Navigate to a page show a progres on the page you navigate from
+<img src='./figs/demo.png'>
+
 
 <h2>Points of Interest</h2>
 <ul>
-      <li>Unlike the Page Router, the App Router does not provide easy-to-use events , making it necessary to implement custom logic for showing navigation progress. but anyway next.js router is not relevant when you navigate to external pages</li>
-      <li>It is hard to debug console.log in RootLayout because the log is deleted by the browwser per page. you can tell the prowser not to do it. in firefox you do it in the dev tools->console->persist logs</li>
+    <li>Unlike the Page Router, the App Router does not provide easy-to-use events , making it necessary to implement custom logic for showing navigation progress. but anyway next.js router is not relevant when you navigate to external pages</li>
+    <li>It is hard to debug console.log in RootLayout because the log is deleted by the browwser per page. you can tell the prowser not to do it. in firefox you do it in the dev tools->console->persist logs</li>
 </ul>
 
 <h2>References</h2>
