@@ -26,7 +26,7 @@ install all packages using
 ```bash
 pnpm i
 ```
-Alternitvely you can use npm
+Alternatively you can use npm
 
 <h2>Usage</h2>
 
@@ -83,13 +83,14 @@ const { navigateToInternalPage, navigateToExternalPage } = useNavigation();
 
 <h2>Limitation</h2>
 
-Only the the build version is working correctly because RootLayout is called on 
+The build version is working correctly because RootLayout is called on 
 every page navigation as follows
 
 <img src='./figs/build-version-is-working.png'/>
 
 The development version is not working as expected and progress continue indefinetly. 
 This is because RootLayout is called only once as follows , instead rebuilding is done
+as follows
 
 <img src='./figs/development-version-not-working.png'/>
 
