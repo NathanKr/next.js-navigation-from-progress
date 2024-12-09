@@ -94,7 +94,32 @@ as follows
 
 <img src='./figs/development-version-not-working.png'/>
 
+So, development mode is misleading, and to avoid confusion, I show the loader only if the mode is not set to development
 
+```ts
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const { endNavigation } = useNavigationStore();
+  useEffect(() => {
+    console.log("RootLayout mounted, ending navigation");
+
+    endNavigation();
+  }, [children, endNavigation ]);
+
+  return (
+    <html lang="en">
+      <body>
+        {!isDevelopment() && <FromPageLoader />}
+        {children}
+      </body>
+    </html>
+  );
+}
+
+```
 
 <h2>Demo</h2>
 Navigate to a page show a progres on the page you navigate from

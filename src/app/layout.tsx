@@ -21,8 +21,6 @@ export default function RootLayout({
         even after endNavigation ,so i have to add to the dependency array */
   }, [children, endNavigation ]);
 
- 
-
   return (
     <html lang="en">
       <body>
