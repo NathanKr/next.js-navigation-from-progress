@@ -4,6 +4,7 @@ import FromPageLoader from "@/components/from-page-loader";
 import "./globals.css";
 import useNavigationStore from "@/store/navigation-store";
 import { useEffect } from "react";
+import { isDevelopment } from "@/logic/gen-utils";
 
 export default function RootLayout({
   children,
@@ -11,7 +12,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const { endNavigation } = useNavigationStore();
-
   useEffect(() => {
     // Ensure navigation state is cleared whenever the layout mounts
     console.log("RootLayout mounted, ending navigation");
@@ -21,10 +21,12 @@ export default function RootLayout({
         even after endNavigation ,so i have to add to the dependency array */
   }, [children, endNavigation ]);
 
+ 
+
   return (
     <html lang="en">
       <body>
-        <FromPageLoader />
+        {!isDevelopment() && <FromPageLoader />}
         {children}
       </body>
     </html>
